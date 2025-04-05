@@ -37,7 +37,7 @@ exe = EXE(
     a.zipfiles,
     a.datas,
     [],
-    name='myllisseosPatos',
+    name='jogo',
     debug=False,
     bootloader_ignore_signals=False,
     strip=False,

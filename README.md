@@ -55,7 +55,7 @@ Para criar um arquivo .exe que pode ser executado em qualquer computador Windows
 1. Execute diretamente o comando:
 
 ```bash
-python -m PyInstaller --name=myllisseosPatos --onefile --windowed --add-data="asset;asset" main.py
+python -m PyInstaller --name=jogo --onefile --windowed --add-data="asset;asset" main.py
 ```
 
 OU
@@ -68,7 +68,7 @@ python create_exe.py
 
 3. Após a conclusão, o executável será encontrado na pasta `dist`.
 
-O arquivo myllisseosPatos.exe pode ser distribuído e executado em qualquer computador Windows sem precisar do Python instalado.
+O arquivo jogo.exe pode ser distribuído e executado em qualquer computador Windows sem precisar do Python instalado.
 
 ## Controles
 

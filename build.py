@@ -64,7 +64,7 @@ def criar_executavel():
         # Criar o executável com todos os assets incluídos
         cmd = [
             "pyinstaller",
-            "--name=myllisseosPatos",
+            "--name=jogo",
             "--onefile",
             "--windowed",
             f"--add-data={add_data_param}",
