@@ -1,0 +1,49 @@
+# Arquivos e diretórios específicos do Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+.venv/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Distribuição / empacotamento
+dist/
+build/
+*.egg-info/
+*.egg
+
+# PyInstaller
+*.manifest
+*.spec
+
+# Logs
+*.log
+
+# Arquivos de sistema
+.DS_Store
+Thumbs.db
+
+# Arquivos de configuração do VS Code
+.vscode/
+*.code-workspace
+.history/
+
+# Arquivos de configuração do PyCharm
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Arquivos de configuração do banco de dados
+*.db
+*.sqlite3
+
+# Arquivos temporários
+*~
+*.swp
+*.swo
