@@ -36,17 +36,6 @@ class Diamond extends Phaser.Physics.Arcade.Sprite {
     // Ajustar offset para centralizar a hitbox
     this.body.setOffset(15, 15); // Ajustado para centralizar hitbox 50x50 na imagem
 
-    // Opcional: adicionar gráfico de debug para visualizar a hitbox
-    this.debugGraphics = scene.add.graphics();
-    this.debugGraphics.setDepth(5);
-    this.debugGraphics.lineStyle(1, 0x00ff00, 0.5); // Verde para diamantes
-    this.debugGraphics.strokeRect(
-      this.x - this.displayWidth * this.originX + this.body.offset.x,
-      this.y - this.displayHeight * this.originY + this.body.offset.y,
-      this.body.width,
-      this.body.height
-    );
-
     // Verificar frames disponíveis
     const textura = scene.textures.get(DIAMANTE_IMG);
     const frameTotal = textura.frameTotal;
@@ -70,18 +59,6 @@ class Diamond extends Phaser.Physics.Arcade.Sprite {
   }
 
   update(time, delta) {
-    // Atualizar o gráfico de debug para seguir o diamante
-    if (this.debugGraphics) {
-      this.debugGraphics.clear();
-      this.debugGraphics.lineStyle(1, 0x00ff00, 0.5);
-      this.debugGraphics.strokeRect(
-        this.x - this.displayWidth * this.originX + this.body.offset.x,
-        this.y - this.displayHeight * this.originY + this.body.offset.y,
-        this.body.width,
-        this.body.height
-      );
-    }
-
     // Verificar tempo de vida (garante que não haverá diamantes eternos)
     if (this.cena.time.now - this.tempoInicio > this.tempoDeVida) {
       console.log(

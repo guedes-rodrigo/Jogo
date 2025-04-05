@@ -40,23 +40,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     this.body.setCollideWorldBounds(false);
     this.body.setImmovable(false);
 
-    // Desenhar um retângulo visível ao redor do inimigo (para debug)
-    // A linha de debug deve ficar em uma profundidade menor que o sprite
-    this.debugGraphics = scene.add.graphics();
-    this.debugGraphics.setDepth(5); // Menor que a profundidade do sprite
-    this.debugGraphics.lineStyle(1, 0xff0000, 0.5);
-    this.debugGraphics.strokeRect(
-      this.body.x,
-      this.body.y,
-      this.body.width,
-      this.body.height
-    );
-
-    // Exibir informações da hitbox para debug
-    console.log(
-      `Inimigo hitbox: (${this.body.x}, ${this.body.y}, ${this.body.width}, ${this.body.height})`
-    );
-
     // Verificar frames disponíveis
     const textura = scene.textures.get(INIMIGO_IMG);
     const frameTotal = textura.frameTotal;
@@ -80,18 +63,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
   }
 
   update(time, delta) {
-    // Atualizar gráfico de depuração para seguir o inimigo
-    if (this.debugGraphics) {
-      this.debugGraphics.clear();
-      this.debugGraphics.lineStyle(1, 0xff0000, 0.5);
-      this.debugGraphics.strokeRect(
-        this.body.x,
-        this.body.y,
-        this.body.width,
-        this.body.height
-      );
-    }
-
     // Verificar tempo de vida (garante que não haverá inimigos eternos)
     if (this.cena.time.now - this.tempoInicio > this.tempoDeVida) {
       console.log(
@@ -122,11 +93,6 @@ class Enemy extends Phaser.Physics.Arcade.Sprite {
     // Verificar se o objeto já foi destruído
     if (!this.active || !this.body) {
       return;
-    }
-
-    // Destruir o gráfico de debug
-    if (this.debugGraphics) {
-      this.debugGraphics.destroy();
     }
 
     // Remover do grupo de física para garantir limpeza completa
