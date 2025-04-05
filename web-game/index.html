@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Myliss e os Patos - Web</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+      }
+      #game-container {
+        width: 800px;
+        height: 600px;
+        background-color: #111;
+      }
+      #loading {
+        color: white;
+        font-family: Arial, sans-serif;
+        font-size: 24px;
+        text-align: center;
+        margin-top: 250px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-container">
+      <div id="loading">Carregando o jogo...</div>
+    </div>
+
+    <script>
+      // Função para depuração do carregamento de scripts
+      function scriptLoaded(name) {
+        console.log(`Script carregado: ${name}`);
+      }
+
+      // Definir uma função global para tratamento de erros
+      window.onerror = function (message, source, lineno, colno, error) {
+        console.error("Erro global:", message, "em", source, "linha:", lineno);
+        document.getElementById("loading").innerHTML =
+          "Erro ao carregar o jogo. Verifique o console.";
+        return true;
+      };
+    </script>
+
+    <!-- Phaser (modo de depuração) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/phaser@3.55.2/dist/phaser.js"
+      onload="scriptLoaded('phaser')"
+    ></script>
+
+    <!-- Scripts do jogo - ordem é importante -->
+    <script src="src/constants.js" onload="scriptLoaded('constants')"></script>
+    <script
+      src="src/background.js"
+      onload="scriptLoaded('background')"
+    ></script>
+    <script src="src/player.js" onload="scriptLoaded('player')"></script>
+    <script src="src/platform.js" onload="scriptLoaded('platform')"></script>
+    <script src="src/enemy.js" onload="scriptLoaded('enemy')"></script>
+    <script src="src/diamond.js" onload="scriptLoaded('diamond')"></script>
+    <script src="src/menu.js" onload="scriptLoaded('menu')"></script>
+    <script src="src/game.js" onload="scriptLoaded('game')"></script>
+    <script>
+      // Ativar modo de depuração antes de carregar o main.js
+      window.PHASER_DEBUG = true;
+    </script>
+    <script src="src/main.js" onload="scriptLoaded('main')"></script>
+
+    <script>
+      // Remover a mensagem de carregamento quando o jogo estiver pronto
+      window.addEventListener("load", function () {
+        const loadingElement = document.getElementById("loading");
+        if (loadingElement && typeof Phaser !== "undefined") {
+          loadingElement.style.display = "none";
+        }
+      });
+    </script>
+  </body>
+</html>
