@@ -1,4 +1,4 @@
-# Myliss e os Patos
+# Jogo
 
 Um jogo de plataforma 2D desenvolvido em Python usando a biblioteca Pygame.
 
