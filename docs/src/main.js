@@ -19,6 +19,10 @@ if (typeof Phaser === "undefined") {
       parent: "game-container",
       width: LARGURA,
       height: ALTURA,
+      scale: {
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+      },
       physics: {
         default: "arcade",
         arcade: {
